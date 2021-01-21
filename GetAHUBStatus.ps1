@@ -91,9 +91,6 @@ $array=@()
 $ahubVM=@()
 $vmlist = @{}
 
-#Amount of 2-proc licenses / 16 core with SA
-$AvailLic = 5
-
 #use resourcegraph to get all vm's with AHUB
 $array+=Search-AzGraph -Query "project name, size = properties.hardwareProfile.vmSize, properties.licenseType, properties.licenseType, resourceGroup, subscriptionId, type, properties.storageProfile.osDisk.osType, location  | where type =~ 'Microsoft.Compute/virtualMachines'"
 $ahubVM=$array | ? { $_.properties_licenseType -eq "Windows_Server" }
