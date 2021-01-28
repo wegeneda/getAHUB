@@ -89,7 +89,7 @@ function send-data([string]$WorkspaceId, [string]$Workspacename, $logMessage, $a
 #create hashtables
 $array=@()
 $ahubVM=@()
-$vmlist=@()
+$vmlist=@{}
 
 #use resourcegraph to get all vm's with AHUB
 $array+=Search-AzGraph -Query "project name, size = properties.hardwareProfile.vmSize, properties.licenseType, properties.licenseType, resourceGroup, subscriptionId, type, properties.storageProfile.osDisk.osType, location  | where type =~ 'Microsoft.Compute/virtualMachines'"
